@@ -1,550 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matin Alinejad | Academic & Professional Webpage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matin Alinejad – Astonishing Academic Webpage</title>
+  <!-- Premium Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- GSAP for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
     :root {
-      --primary: #5f2eea;
-      --secondary: #00c6fb;
-      --accent: #fc5c7d;
-      --background: #f7f9fa;
+      --primary: #3a0ca3;
+      --secondary: #4361ee;
+      --accent: #f72585;
       --glass: rgba(255,255,255,0.85);
+      --glass-dark: rgba(34,34,51,0.85);
       --text: #1a1a2e;
-      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-      --border: rgba(255,255,255,0.18);
-      --dark-bg: #181a2a;
-      --dark-glass: rgba(24,26,42,0.92);
-      --dark-text: #f7f9fa;
-      --nav-bg: rgba(255,255,255,0.7);
-      --nav-dark-bg: rgba(24,26,42,0.92);
-      --transition: 0.5s cubic-bezier(.77,0,.18,1);
-    }
-    [data-theme="dark"] {
-      --background: var(--dark-bg);
-      --glass: var(--dark-glass);
-      --text: var(--dark-text);
-      --nav-bg: var(--nav-dark-bg);
+      --text-light: #fff;
+      --shadow: 0 8px 32px 0 rgba(58,12,163,0.18);
+      --spacing: 2.5rem;
+      --radius: 32px;
+      --nav-width: 80px;
     }
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
-      min-height: 100vh;
+      background: #f8f9fa;
       color: var(--text);
-      transition: background var(--transition), color var(--transition);
+      min-height: 100vh;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     body {
       position: relative;
-      overflow-x: hidden;
     }
-    .animated-bg {
+    /* Morphing SVG Animated Background */
+    .bg-svg {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       z-index: 0;
       pointer-events: none;
-      background: linear-gradient(120deg, var(--primary), var(--secondary), var(--accent));
-      background-size: 200% 200%;
-      animation: gradientMove 16s ease-in-out infinite;
-      opacity: 0.18;
+      opacity: 0.7;
     }
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .parallax {
+    /* Floating Sidebar Navigation */
+    .sidebar-nav {
       position: fixed;
-      width: 100vw;
-      height: 100vh;
-      top: 0; left: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .parallax svg {
-      position: absolute;
-      width: 60vw;
-      min-width: 400px;
-      opacity: 0.22;
-      filter: blur(2px);
-      animation: float 18s ease-in-out infinite alternate;
-    }
-    .parallax .shape1 { top: -120px; left: -120px; animation-delay: 0s; }
-    .parallax .shape2 { bottom: -120px; right: -120px; animation-delay: 4s; }
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-40px) scale(1.08); }
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      width: 100%;
+      top: 50%;
+      left: 2vw;
+      transform: translateY(-50%);
       z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 16px 0 rgba(31,38,135,0.08);
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem 0;
-      transition: background var(--transition);
-    }
-    .tab-nav {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .tab-nav li {
-      margin: 0;
-    }
-    .tab-btn {
-      color: var(--primary);
+      flex-direction: column;
+      gap: 2.2rem;
       background: none;
-      border: none;
-      font-weight: 600;
-      font-size: 1.08rem;
-      letter-spacing: 0.5px;
-      padding: 0.5rem 1.2rem;
-      border-radius: 12px 12px 0 0;
-      transition: background 0.2s, color 0.2s;
-      cursor: pointer;
-      outline: none;
-      position: relative;
-      z-index: 2;
     }
-    .tab-btn.active, .tab-btn:hover {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: #fff;
-      box-shadow: 0 4px 16px 0 rgba(31,38,135,0.10);
-    }
-    .container {
-      max-width: 1100px;
-      margin: 3.5rem auto 2rem auto;
-      position: relative;
-      z-index: 2;
-      padding: 0 1.2rem;
-    }
-    .glass {
+    .sidebar-link {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       background: var(--glass);
       box-shadow: var(--shadow);
-      border-radius: 28px;
-      border: 1.5px solid var(--border);
-      padding: 2.7rem 2.2rem;
-      margin-bottom: 2.5rem;
-      backdrop-filter: blur(16px);
-      position: relative;
-      z-index: 2;
-      transition: background var(--transition);
-      overflow: hidden;
-    }
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 2.7rem;
-      margin-bottom: 2.2rem;
-      min-height: 220px;
-      position: relative;
-    }
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3.2rem;
+      margin: 0 auto;
+      font-size: 1.5rem;
+      color: var(--primary);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .sidebar-link.active, .sidebar-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #fff;
-      box-shadow: 0 4px 32px 0 rgba(79,91,213,0.18);
+      transform: scale(1.12);
+    }
+    .sidebar-indicator {
+      position: absolute;
+      left: 50%;
+      width: 8px;
+      height: 56px;
+      background: var(--accent);
+      border-radius: 8px;
+      transform: translateX(-50%);
+      transition: top 0.5s cubic-bezier(.77,0,.18,1);
+      z-index: -1;
+      opacity: 0.7;
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      padding-left: calc(var(--nav-width) + 4vw);
+      padding-right: 4vw;
+    }
+    .hero-card {
+      background: var(--glass);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 4rem 3.5rem 3.5rem 3.5rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
       overflow: hidden;
-      border: 4px solid var(--secondary);
-      animation: popIn 1.2s cubic-bezier(.77,0,.18,1);
+      backdrop-filter: blur(16px);
+      border: 2px solid rgba(67,97,238,0.08);
+      animation: fadeIn 1.2s;
     }
-    @keyframes popIn {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .hero-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .hero-info h1 {
-      margin: 0 0 0.5rem 0;
-      font-size: 2.9rem;
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero-info .subtitle {
-      font-size: 1.25rem;
-      color: var(--primary);
-      font-weight: 500;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.2px;
+    .hero-animated {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1.5rem;
+      min-height: 2.2em;
+      letter-spacing: 0.5px;
+      font-weight: 600;
     }
-    .hero-info .contact {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .hero-achievements, .hero-interests {
+      margin: 2.2rem 0 1.2rem 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
+      flex-direction: column;
+      gap: 0.7rem;
       align-items: center;
     }
-    .hero-info .contact a {
-      color: var(--accent);
-      text-decoration: none;
-      margin-right: 0.7rem;
-      transition: color 0.2s;
+    .hero-achievements span, .hero-interests span {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      border-radius: 18px;
+      padding: 0.4rem 1.2rem;
+      font-size: 1.08rem;
       font-weight: 500;
+      box-shadow: 0 2px 8px 0 rgba(67,97,238,0.08);
+      margin-bottom: 0.2rem;
+      display: inline-block;
+      letter-spacing: 0.2px;
+      opacity: 0.95;
+      transition: background 0.2s;
     }
-    .hero-info .contact a:hover {
-      color: var(--primary);
-      text-decoration: underline;
+    .hero-achievements span:hover, .hero-interests span:hover {
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      color: #fff;
     }
-    .hero-info .contact .icon {
-      font-size: 1.2rem;
-      margin-right: 0.3rem;
-      vertical-align: middle;
+    .hero-social {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
     }
-    .hero-info .dynamic-text {
-      font-family: 'Fira Mono', monospace;
-      font-size: 1.1rem;
-      color: var(--secondary);
-      margin-top: 0.7rem;
-      min-height: 1.5em;
-      letter-spacing: 0.5px;
-      animation: fadeIn 1.2s;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .toggle-dark {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: var(--glass);
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
+    .hero-social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      font-size: 1.5rem;
-      transition: background 0.3s, color 0.3s;
-      z-index: 200;
-    }
-    .toggle-dark:hover {
-      background: var(--accent);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: #fff;
-    }
-    .tab-content {
-      display: none;
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      transition: opacity 0.5s, transform 0.5s;
-      position: relative;
-      z-index: 2;
-    }
-    .tab-content.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      animation: fadeIn 1.2s;
-    }
-    .cv-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-    }
-    .cv-list li {
-      background: linear-gradient(120deg, var(--glass) 80%, var(--secondary) 120%);
-      border-radius: 14px;
-      box-shadow: 0 2px 12px 0 rgba(79,91,213,0.08);
-      padding: 1.1rem 1rem 1rem 1.2rem;
-      border-left: 5px solid var(--primary);
-      transition: transform 0.18s, box-shadow 0.18s;
-      will-change: transform;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 12px 0 rgba(67,97,238,0.12);
+      transition: transform 0.18s, box-shadow 0.18s, background 0.2s;
+      text-decoration: none;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
     }
-    .cv-list li:hover {
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
-      border-left: 5px solid var(--accent);
+    .hero-social a:hover {
+      transform: scale(1.18) rotate(-6deg);
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: 0 8px 32px 0 rgba(247,37,133,0.18);
     }
-    .cv-list li:last-child {
-      margin-bottom: 0;
-    }
-    .chips {
+    .hero-cv {
+      margin-top: 2.5rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      justify-content: center;
     }
-    .chip {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    .cv-btn {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       color: #fff;
-      border-radius: 16px;
-      padding: 0.3rem 1rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      box-shadow: 0 2px 8px 0 rgba(79,91,213,0.08);
-      margin-bottom: 0.2rem;
-      transition: background 0.2s;
-    }
-    .chip:hover {
-      background: linear-gradient(90deg, var(--accent), var(--secondary));
-    }
-    .divider {
-      width: 100%;
-      height: 36px;
-      background: url('data:image/svg+xml;utf8,<svg width="100%" height="36" viewBox="0 0 1200 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0C150 36 350 36 600 0C850 -36 1050 -36 1200 0V36H0V0Z" fill="%23fc5c7d" fill-opacity="0.12"/></svg>') repeat-x;
-      margin: 2.5rem 0 1.5rem 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
       border: none;
-      opacity: 0.7;
+      border-radius: 24px;
+      padding: 0.9rem 2.5rem;
+      box-shadow: 0 2px 16px 0 rgba(67,97,238,0.13);
+      cursor: pointer;
+      letter-spacing: 0.7px;
+      transition: background 0.2s, transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+      outline: none;
+      animation: fadeIn 1.5s 0.5s backwards;
+    }
+    .cv-btn:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px 0 rgba(247,37,133,0.18);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.98); }
+      to { opacity: 1; transform: none; }
     }
     @media (max-width: 900px) {
-      .cv-list { grid-template-columns: 1fr; }
-      .container { padding: 0 0.2rem; }
-      .hero { flex-direction: column; gap: 1.2rem; }
-      .profile-pic { width: 100px; height: 100px; font-size: 2rem; }
+      .hero-card { padding: 2.2rem 1.2rem; }
+      .hero-title { font-size: 2.1rem; }
+      .sidebar-nav { left: 0.5vw; }
     }
     @media (max-width: 600px) {
-      .glass { padding: 1.2rem 0.5rem; }
-      .hero-info h1 { font-size: 2rem; }
-      h2 { font-size: 1.2rem; }
+      .hero { padding-left: 0; padding-right: 0; }
+      .sidebar-nav { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="animated-bg"></div>
-  <div class="parallax">
-    <svg class="shape1" viewBox="0 0 600 600"><circle cx="300" cy="300" r="300" fill="url(#grad1)"/></svg>
-    <svg class="shape2" viewBox="0 0 600 600"><rect x="0" y="0" width="600" height="600" rx="300" fill="url(#grad2)"/></svg>
-    <svg width="0" height="0">
-      <defs>
-        <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#5f2eea"/>
-          <stop offset="100%" stop-color="#00c6fb"/>
-        </linearGradient>
-        <linearGradient id="grad2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#fc5c7d"/>
-          <stop offset="100%" stop-color="#00c6fb"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-  <button class="toggle-dark" id="toggleDark" title="Toggle dark mode">🌙</button>
-  <nav>
-    <ul class="tab-nav">
-      <li><button class="tab-btn active" data-tab="about">About</button></li>
-      <li><button class="tab-btn" data-tab="publications">Publications</button></li>
-      <li><button class="tab-btn" data-tab="honors">Honors</button></li>
-      <li><button class="tab-btn" data-tab="education">Education</button></li>
-      <li><button class="tab-btn" data-tab="research">Research</button></li>
-      <li><button class="tab-btn" data-tab="interests">Interests</button></li>
-      <li><button class="tab-btn" data-tab="services">Services</button></li>
-      <li><button class="tab-btn" data-tab="experience">Experience</button></li>
-      <li><button class="tab-btn" data-tab="courses">Courses</button></li>
-      <li><button class="tab-btn" data-tab="skills">Skills</button></li>
-    </ul>
+  <!-- Morphing SVG Animated Background -->
+  <svg class="bg-svg" id="bgSVG" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="morph1" d="M0,0 Q720,200 1440,0 L1440,900 Q720,700 0,900 Z" fill="url(#grad1)"/>
+    <defs>
+      <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3a0ca3"/>
+        <stop offset="100%" stop-color="#f72585"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <!-- Floating Sidebar Navigation -->
+  <nav class="sidebar-nav">
+    <button class="sidebar-link active" data-target="#hero" title="Home">🏠</button>
+    <button class="sidebar-link" data-target="#achievements" title="Achievements">🏆</button>
+    <button class="sidebar-link" data-target="#interests" title="Interests">💡</button>
+    <button class="sidebar-link" data-target="#contact" title="Contact">✉️</button>
+    <div class="sidebar-indicator" id="sidebarIndicator"></div>
   </nav>
-  <div class="container">
-    <div class="glass section" id="hero">
-      <div class="hero">
-        <div class="profile-pic" title="Profile Photo">MA</div>
-        <div class="hero-info">
-          <h1>Matin Alinejad</h1>
-          <div class="subtitle">B.Sc. Electrical Engineering, Sharif University of Technology</div>
-          <div class="contact">
-            <span class="icon">📍</span>Tehran, Iran
-            <span class="icon">✉️</span><a href="mailto:matin.alnj@gmail.com">matin.alnj@gmail.com</a>
-            <span class="icon">📞</span><a href="tel:+989306008661">+98 930 600 8661</a>
-          </div>
-          <div class="contact">Date of Birth: 16 June 2002</div>
-          <div class="dynamic-text" id="dynamicText"></div>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-card">
+      <div class="hero-title" id="heroTitle">Matin Alinejad</div>
+      <div class="hero-animated" id="heroAnimated"></div>
+      <div class="hero-achievements" id="achievements">
+        <span>Top 101, National University Entrance Exam</span>
+        <span>First Author, C2P: Causal Reasoning in LLMs</span>
+      </div>
+      <div class="hero-interests" id="interests">
+        <span>Causal Inference & Discovery</span>
+        <span>Control & Dynamical Systems</span>
+      </div>
+      <div class="hero-social">
+        <a href="mailto:matin.alnj@gmail.com" title="Email"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        <a href="https://scholar.google.com/citations?user=8YnQNuMAAAAJ" target="_blank" title="Google Scholar"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15l4-4 4 4"/></svg></a>
+        <a href="https://github.com/matinalinejad" target="_blank" title="GitHub"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg></a>
+      </div>
+      <div class="hero-cv">
+        <a href="Matin%20Alinejad%20-%20CV%20-%202025.pdf" class="cv-btn" download>Download CV</a>
       </div>
     </div>
-    <div class="glass tab-content active" id="about">
-      <h2>About</h2>
-      <p>Passionate about causal inference, machine learning, and control systems. Experienced in research, teaching, and developing advanced algorithms in AI, privacy, and optimization. Currently pursuing a B.Sc. in Electrical Engineering at Sharif University of Technology, with a strong record of academic excellence and impactful research.</p>
-    </div>
-    <div class="glass tab-content" id="publications">
-      <h2>Publications</h2>
-      <ul class="cv-list">
-        <li><b>2024</b> – <a href="https://arxiv.org/pdf/2407.18069v2" target="_blank">C2P: Featuring Large Language Models with Causal Reasoning</a> <br/>
-        <span>Abdolmahdi Bagheri*, <b>Matin Alinejad*</b>, Kevin Bello, Alireza Akhondi-Asl</span></li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="honors">
-      <h2>Honors & Awards</h2>
-      <ul class="cv-list">
-        <li><b>2020</b> – National Universities Entrance Exam, Mathematics and Physics, Ministry of Science<br/>
-        <span>Ranked <b>101st</b> out of 150,000+ participants</span></li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="education">
-      <h2>Education</h2>
-      <ul class="cv-list">
-        <li><b>2020–Present</b> – B.Sc. in Electrical Engineering, Sharif University of Technology, Tehran, Iran<br/><span>GPA: 3.58/4</span></li>
-        <li><b>2017–2020</b> – High School Diploma in Mathematics and Physics, Shahid Beheshti High School (NODET), Mazandaran, Iran<br/><span>GPA: 19.2/20</span></li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="research">
-      <h2>Research Experience</h2>
-      <ul class="cv-list">
-        <li><b>2025–Present</b> – RIML-Lab, Sharif University of Technology<br/>
-          <i>Supervised by Prof. Mohammad Hossein Rohban and Prof. Mohammad Hossein Yassaee</i>
-          <ul>
-            <li><b>Causal/Counterfactual Reasoning in LLMs:</b> Developing a benchmark dataset to challenge and evaluate LLMs in causal inference and counterfactual reasoning. Proposing novel solutions (Causal RL) to enhance LLMs for these tasks.</li>
-          </ul>
-        </li>
-        <li><b>2024–Present</b> – Independent Research<br/>
-          <i>Supervised by Ehsan Sharifian</i>
-          <ul>
-            <li><b>Experiment Design for Causal Discovery:</b> Designing efficient experimental setups to uncover causal relationships in complex systems using statistical and ML techniques.</li>
-          </ul>
-        </li>
-        <li><b>2023–2024</b> – Independent Research<br/>
-          <i>Supervised by Dr. Abdolmahdi Bagheri and Prof. Alireza Akhondi-Asl</i>
-          <ul>
-            <li><b>Causal Reasoning in LLMs:</b> Explored LLMs' causal reasoning abilities, proposed the C2P framework, and bridged ML and causal reasoning.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="interests">
-      <h2>Research Interests</h2>
-      <div class="chips">
-        <div class="chip">Causal Inference & Discovery</div>
-        <div class="chip">Causal Reinforcement Learning</div>
-        <div class="chip">Privacy in Statistical Models & ML</div>
-        <div class="chip">Control/Feedback/Dynamical Systems</div>
-        <div class="chip">Optimization in ML</div>
-        <div class="chip">Game Theory & Mechanism Design</div>
-      </div>
-    </div>
-    <div class="glass tab-content" id="services">
-      <h2>Academic Services</h2>
-      <ul class="cv-list">
-        <li><b>Head Teaching Assistant</b> – Mathematical Methods in Engineering (Linear Algebra), Spring 2025, Sharif University of Technology (Instructor: Mehdi Molkaraie)</li>
-        <li><b>Teaching Assistant</b> – Image Processing, Spring 2025, Sharif University of Technology (Instructor: Hossein Peyvandi)</li>
-        <li><b>Teaching Assistant</b> – Industrial Control, Spring 2025, Sharif University of Technology (Instructor: Behzad Ahi)</li>
-        <li><b>Teaching Assistant</b> – Linear Control Systems, Fall 2024, Sharif University of Technology (Instructor: Behzad Ahi)</li>
-        <li><b>Teaching Assistant</b> – Security and Privacy in ML (Graduate), Fall 2024 & Spring 2024, Sharif University of Technology (Instructor: Amir Mahdi Sadeghzadeh)</li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="experience">
-      <h2>Professional Experience</h2>
-      <ul class="cv-list">
-        <li><b>Course Projects</b>
-          <ul>
-            <li><b>Machine Learning and Vision Topics</b> (Fall 2024): ML, CV, feature extraction, neural networks, optical flow, image analysis.</li>
-            <li><b>Optimal Control of Nonlinear Systems via Koopman Operator</b> (Fall 2024): Data-driven optimal control, simulation, validation.</li>
-            <li><b>Machine Unlearning & Membership Inference Attacks</b> (Spring 2024): Privacy, unlearning, inference attacks, mitigation.</li>
-            <li><b>Differentially Private Learning with Public Data</b> (Fall 2023): Private supervised domain adaptation, sample complexity, convex/non-convex problems.</li>
-            <li><b>Fast ICA and EASI Algorithm</b> (Spring 2023): Blind source separation, MATLAB, performance evaluation.</li>
-            <li><b>Stochastic Optimization</b> (Spring 2023): SGD, Python, optimization analysis.</li>
-            <li><b>Shazam Music Recognition Algorithm</b> (Spring 2022): Signal processing, FFT, music fingerprinting.</li>
-            <li><b>Farm Frenzy Game</b> (Spring 2021): Java, JavaFX, OOP.</li>
-            <li><b>Brick Breaker Game</b> (Fall 2020): C++, SDL.</li>
-          </ul>
-        </li>
-        <li><b>Teaching Experience</b>
-          <ul>
-            <li>Mathematics Instructor, Afarinesh High School (2023–Present)</li>
-            <li>Mathematics & Physics Instructor, Zehne-Ziba Institute (2022–2023)</li>
-            <li>Blockchain Workshop Mentor, Rasta Group (2023)</li>
-            <li>Source Coding Workshop Mentor, Rasta Group (2022)</li>
-            <li>Mathematics & Physics Instructor, Shahid Beheshti High School (NODET) (2020–2022)</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="courses">
-      <h2>Notable Courses & Studies</h2>
-      <ul class="cv-list">
-        <li><b>Graduate Courses</b>
-          <ul>
-            <li>Advanced Engineering Mathematics (Fall 2023, Grade: 18.9/20)</li>
-            <li>Differential Privacy in Statistics and ML (Fall 2023, Grade: 18.9/20)</li>
-          </ul>
-        </li>
-        <li><b>Undergraduate Courses</b>
-          <ul>
-            <li>Machine Learning and Vision Laboratory (Fall 2024, Grade: 19.3/20)</li>
-            <li>Industrial Control (Spring 2024, Grade: 19.6/20)</li>
-            <li>Linear Control Systems (Fall 2022, Grade: 16.4/20)</li>
-            <li>Differential Equations (Spring 2021, Grade: 16.9/20)</li>
-            <li>Calculus I (Spring 2021, Grade: 17.2/20)</li>
-            <li>Fundamentals of Programming (C++) (Fall 2020, Grade: 18.9/20)</li>
-          </ul>
-        </li>
-        <li><b>Side Studies</b>
-          <ul>
-            <li>Learning Theory Study Group (2024–Present): Weekly discussions on Francis Bach's <a href="https://www.di.ens.fr/~fbach/ltfp_book.pdf" target="_blank">Learning Theory from First Principles</a>.</li>
-            <li>Linear Algebra Study Group (2023–2024): Weekly presentations on Sheldon Axler’s <a href="https://linear.axler.net/" target="_blank">Linear Algebra Done Right</a>.</li>
-            <li>Self-Study on Causality (2023–2024): Judea Pearl's <i>Causality</i> and <i>The Book of Why</i>.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="glass tab-content" id="skills">
-      <h2>Technical & Personal Skills</h2>
-      <ul class="cv-list">
-        <li><b>Programming Languages:</b> Python (NumPy, PyTorch, OpenDP, Opacus, Pandas, SciPy, etc.), MATLAB (Optimization, Curve Fitting, System Identification, PID Tuner, MATLAB Coder, Simulink, etc.), C++ (Expert); Julia, C, Java (Intermediate)</li>
-        <li><b>Languages:</b> Persian (Native), English (Professional), Arabic (Elementary), French (Elementary)</li>
-        <li><b>Sports:</b> Volleyball (Professional player, U19 National Team, captain of Sharif University Volleyball Team, ex-Kalleh Sport Team)</li>
-      </ul>
-    </div>
-  </div>
+  </section>
+  <!-- GSAP Animations & Interactivity -->
   <script>
-    // Dark mode toggle
-    const toggle = document.getElementById('toggleDark');
-    toggle.onclick = () => {
-      const theme = document.documentElement.getAttribute('data-theme');
-      if (theme === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
-        toggle.textContent = '🌙';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggle.textContent = '☀️';
-      }
-    };
-    // Dynamic text typing effect
-    const dynamicText = document.getElementById('dynamicText');
+    // Morphing SVG Animation
+    const morph1 = document.getElementById('morph1');
+    const morphs = [
+      "M0,0 Q720,200 1440,0 L1440,900 Q720,700 0,900 Z",
+      "M0,0 Q720,400 1440,0 L1440,900 Q720,500 0,900 Z",
+      "M0,0 Q900,100 1440,0 L1440,900 Q540,800 0,900 Z",
+      "M0,0 Q720,200 1440,0 L1440,900 Q720,700 0,900 Z"
+    ];
+    let morphIdx = 0;
+    function animateMorph() {
+      morphIdx = (morphIdx + 1) % morphs.length;
+      gsap.to(morph1, { duration: 4, attr: { d: morphs[morphIdx] }, ease: "power1.inOut", onComplete: animateMorph });
+    }
+    animateMorph();
+    // Hero Animated Text
+    const heroAnimated = document.getElementById('heroAnimated');
     const phrases = [
       'Causal Inference Enthusiast',
-      'Machine Learning Researcher',
+      'Machine Learning Visionary',
       'Control Systems Explorer',
-      'Privacy & Optimization Advocate',
-      'Sharif University of Technology',
-      'Always Learning, Always Creating'
+      'Always Creating the Future'
     ];
     let phraseIdx = 0, charIdx = 0, isDeleting = false;
     function typeEffect() {
       const phrase = phrases[phraseIdx];
       if (!isDeleting) {
-        dynamicText.textContent = phrase.slice(0, charIdx++);
+        heroAnimated.textContent = phrase.slice(0, charIdx++);
         if (charIdx > phrase.length) {
           isDeleting = true;
           setTimeout(typeEffect, 1200);
@@ -552,7 +311,7 @@
           setTimeout(typeEffect, 60);
         }
       } else {
-        dynamicText.textContent = phrase.slice(0, charIdx--);
+        heroAnimated.textContent = phrase.slice(0, charIdx--);
         if (charIdx < 0) {
           isDeleting = false;
           phraseIdx = (phraseIdx + 1) % phrases.length;
@@ -563,24 +322,31 @@
       }
     }
     typeEffect();
-    // Tab navigation logic
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabBtns.forEach(btn => {
+    // Sidebar Navigation
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const sidebarIndicator = document.getElementById('sidebarIndicator');
+    const sections = ['#hero', '#achievements', '#interests', '#contact'];
+    function updateIndicator(idx) {
+      sidebarIndicator.style.top = (idx * 80) + 'px';
+    }
+    sidebarLinks.forEach((btn, idx) => {
       btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
+        sidebarLinks.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const tab = btn.getAttribute('data-tab');
-        tabContents.forEach(content => {
-          if(content.id === tab) {
-            content.classList.add('active');
-          } else {
-            content.classList.remove('active');
-          }
-        });
-        // Scroll to top of container for better UX
-        document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+        document.querySelector(sections[idx]).scrollIntoView({ behavior: 'smooth' });
+        updateIndicator(idx);
       });
+    });
+    updateIndicator(0);
+    // Parallax effect for hero card
+    const heroCard = document.querySelector('.hero-card');
+    document.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      heroCard.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      heroCard.style.transform = '';
     });
   </script>
 </body>

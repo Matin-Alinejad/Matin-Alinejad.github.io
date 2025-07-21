@@ -1,6 +1,13 @@
-# Matin Alinejad | Academic & Professional Webpage
+# My Personal Webpage
 
-Welcome to the personal academic and professional website of **Matin Alinejad**. This site showcases research, education, publications, projects, teaching, honors, blog/news, and contact information in a world-class, modern, and responsive format.
+This is the personal academic homepage of Matin Alinejad.
+
+## Updating Social Links
+- Update the GitHub and other social links in `index.html` as needed.
+- The Google Scholar and email links are already set.
+
+## Favicon
+- The site expects a `favicon.png` in the root directory. Add your preferred favicon image as `favicon.png` for best results.
 
 ## 🌐 Live Site
 Once deployed, your site will be available at:

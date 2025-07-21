@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matin Alinejad | Pioneer in AI Research</title>
+    <title>Matin Alinejad | Academic Researcher</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
         :root {
-            --neon-cyan: #00ffff;
-            --neon-pink: #ff00ff;
-            --neon-yellow: #ffff00;
-            --deep-space: #0a0a0a;
-            --cosmic-purple: #8a2be2;
-            --stellar-blue: #4169e1;
-            --quantum-green: #00ff41;
-            --plasma-orange: #ff6b35;
+            --academic-navy: #1a365d;
+            --academic-gold: #d69e2e;
+            --academic-slate: #2d3748;
+            --academic-blue: #3182ce;
+            --academic-teal: #319795;
+            --academic-purple: #805ad5;
+            --academic-gray: #4a5568;
+            --academic-light: #e2e8f0;
+            --academic-dark: #1a202c;
+            --academic-white: #ffffff;
         }
 
         * {
@@ -30,17 +32,18 @@
         }
 
         body {
-            font-family: 'Exo 2', sans-serif;
-            background: var(--deep-space);
-            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--academic-dark) 0%, var(--academic-slate) 100%);
+            color: var(--academic-white);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        .orbitron { font-family: 'Orbitron', monospace; }
-        .space-mono { font-family: 'Space Mono', monospace; }
+        .playfair { font-family: 'Playfair Display', serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Revolutionary Background System */
-        .cosmic-bg {
+        /* Professional Background System */
+        .academic-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -48,19 +51,19 @@
             height: 100%;
             z-index: -10;
             background: 
-                radial-gradient(circle at 20% 80%, var(--neon-cyan) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, var(--neon-pink) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, var(--cosmic-purple) 0%, transparent 50%);
-            animation: cosmicShift 20s ease-in-out infinite;
+                radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(128, 90, 213, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(49, 151, 149, 0.1) 0%, transparent 50%);
+            animation: academicShift 30s ease-in-out infinite;
         }
 
-        @keyframes cosmicShift {
+        @keyframes academicShift {
             0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 0.6; }
+            50% { transform: scale(1.1) rotate(90deg); opacity: 0.5; }
         }
 
-        /* Quantum Grid System */
-        .quantum-grid {
+        /* Professional Grid System */
+        .academic-grid {
             position: fixed;
             top: 0;
             left: 0;
@@ -68,18 +71,18 @@
             height: 100%;
             z-index: -5;
             background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridPulse 8s ease-in-out infinite;
+                linear-gradient(rgba(49, 130, 206, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(49, 130, 206, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridPulse 12s ease-in-out infinite;
         }
 
         @keyframes gridPulse {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.05); }
+            0%, 100% { opacity: 0.05; transform: scale(1); }
+            50% { opacity: 0.15; transform: scale(1.02); }
         }
 
-        /* Revolutionary Navigation */
+        /* Professional Navigation */
         .nav-container {
             position: fixed;
             top: 2rem;
@@ -88,36 +91,37 @@
         }
 
         .nav-toggle {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
-            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(49, 130, 206, 0.3);
         }
 
         .nav-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(255, 0, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(49, 130, 206, 0.4);
         }
 
         .nav-menu {
             position: absolute;
-            top: 80px;
+            top: 70px;
             right: 0;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(26, 32, 44, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--neon-cyan);
-            border-radius: 20px;
+            border: 1px solid var(--academic-blue);
+            border-radius: 16px;
             padding: 1rem;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-20px);
+            transform: translateY(-10px);
             transition: all 0.3s ease;
+            min-width: 200px;
         }
 
         .nav-menu.active {
@@ -128,11 +132,12 @@
 
         .nav-item {
             display: block;
-            padding: 0.75rem 1.5rem;
-            color: #fff;
+            padding: 0.75rem 1.25rem;
+            color: var(--academic-white);
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            font-weight: 500;
             position: relative;
             overflow: hidden;
         }
@@ -144,7 +149,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            background: linear-gradient(90deg, transparent, var(--academic-blue), transparent);
             transition: left 0.5s;
         }
 
@@ -153,11 +158,11 @@
         }
 
         .nav-item:hover {
-            background: rgba(0, 255, 255, 0.1);
-            transform: translateX(10px);
+            background: rgba(49, 130, 206, 0.1);
+            transform: translateX(5px);
         }
 
-        /* Revolutionary Hero Section */
+        /* Professional Hero Section */
         .hero-container {
             min-height: 100vh;
             display: flex;
@@ -171,37 +176,39 @@
             text-align: center;
             z-index: 10;
             position: relative;
+            max-width: 800px;
+            padding: 0 2rem;
         }
 
         .hero-avatar {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 3rem;
             position: relative;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--quantum-green));
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple), var(--academic-teal));
             padding: 4px;
-            animation: avatarGlow 3s ease-in-out infinite;
+            animation: avatarGlow 4s ease-in-out infinite;
         }
 
         .hero-avatar::before {
             content: '';
             position: absolute;
-            inset: -10px;
+            inset: -8px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--quantum-green));
-            opacity: 0.5;
-            animation: avatarPulse 2s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple), var(--academic-teal));
+            opacity: 0.3;
+            animation: avatarPulse 3s ease-in-out infinite;
         }
 
         @keyframes avatarGlow {
-            0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(255, 0, 255, 0.8); }
+            0%, 100% { box-shadow: 0 0 30px rgba(49, 130, 206, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(128, 90, 213, 0.4); }
         }
 
         @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.5; }
         }
 
         .hero-avatar img {
@@ -209,63 +216,64 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            background: var(--deep-space);
+            background: var(--academic-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: 900;
-            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--academic-white);
         }
 
         .hero-title {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--quantum-green));
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleShimmer 3s ease-in-out infinite;
+            animation: titleShimmer 4s ease-in-out infinite;
         }
 
         @keyframes titleShimmer {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(180deg); }
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.1); }
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--neon-cyan);
+            font-size: 1.4rem;
+            color: var(--academic-gold);
             margin-bottom: 2rem;
-            font-family: 'Space Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            color: #ccc;
+            font-size: 1.1rem;
+            color: var(--academic-light);
             max-width: 600px;
             margin: 0 auto 3rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* Revolutionary Social Links */
+        /* Professional Social Links */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
         .social-link {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: var(--academic-white);
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
@@ -279,7 +287,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--quantum-green), var(--plasma-orange));
+            background: linear-gradient(135deg, var(--academic-teal), var(--academic-gold));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -289,29 +297,29 @@
         }
 
         .social-link:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(49, 130, 206, 0.3);
         }
 
         .social-link i {
             position: relative;
             z-index: 1;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
-        /* Revolutionary Achievement Badges */
+        /* Professional Achievement Badges */
         .achievement-badges {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
         .achievement-badge {
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--cosmic-purple));
-            border-radius: 30px;
-            color: #fff;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
+            border-radius: 25px;
+            color: var(--academic-white);
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -319,6 +327,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;
         }
 
         .achievement-badge::before {
@@ -328,7 +337,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
 
@@ -337,85 +346,86 @@
         }
 
         .achievement-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.3);
         }
 
-        /* Revolutionary Section Design */
+        /* Professional Section Design */
         .section {
             padding: 6rem 2rem;
             position: relative;
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 900;
+            font-size: 2.5rem;
+            font-weight: 700;
             text-align: center;
             margin-bottom: 4rem;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            font-family: 'Playfair Display', serif;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--academic-blue), var(--academic-purple));
             border-radius: 2px;
         }
 
-        /* Revolutionary Card System */
-        .quantum-card {
-            background: rgba(10, 10, 10, 0.8);
+        /* Professional Card System */
+        .academic-card {
+            background: rgba(26, 32, 44, 0.8);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--neon-cyan);
-            border-radius: 20px;
-            padding: 2rem;
+            border: 1px solid var(--academic-blue);
+            border-radius: 16px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .quantum-card::before {
+        .academic-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
-        .quantum-card:hover::before {
-            opacity: 0.1;
+        .academic-card:hover::before {
+            opacity: 0.05;
         }
 
-        .quantum-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-            border-color: var(--neon-pink);
+        .academic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(49, 130, 206, 0.15);
+            border-color: var(--academic-purple);
         }
 
-        /* Revolutionary Skill Tags */
+        /* Professional Skill Tags */
         .skill-tag {
             display: inline-block;
             padding: 0.5rem 1rem;
             margin: 0.25rem;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--quantum-green));
-            color: #fff;
+            background: linear-gradient(135deg, var(--academic-blue), var(--academic-teal));
+            color: var(--academic-white);
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
@@ -429,7 +439,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
 
@@ -438,11 +448,11 @@
         }
 
         .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
         }
 
-        /* Revolutionary Timeline */
+        /* Professional Timeline */
         .timeline {
             position: relative;
             padding-left: 3rem;
@@ -455,7 +465,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-pink));
+            background: linear-gradient(to bottom, var(--academic-blue), var(--academic-purple));
         }
 
         .timeline-item {
@@ -470,15 +480,15 @@
             top: 0.5rem;
             width: 1rem;
             height: 1rem;
-            background: var(--neon-cyan);
+            background: var(--academic-blue);
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(49, 130, 206, 0.4);
         }
 
-        /* Revolutionary Contact Section */
+        /* Professional Contact Section */
         .contact-section {
-            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
-            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.1), rgba(128, 90, 213, 0.1));
+            border-radius: 24px;
             padding: 4rem 2rem;
             text-align: center;
             margin: 4rem 0;
@@ -496,22 +506,22 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.8);
-            border-radius: 20px;
-            border: 1px solid var(--neon-cyan);
+            padding: 1.25rem 2rem;
+            background: rgba(26, 32, 44, 0.8);
+            border-radius: 16px;
+            border: 1px solid var(--academic-blue);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(49, 130, 206, 0.2);
         }
 
-        /* Revolutionary Animations */
+        /* Professional Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes rotate {
@@ -524,10 +534,10 @@
         }
 
         .rotating {
-            animation: rotate 20s linear infinite;
+            animation: rotate 25s linear infinite;
         }
 
-        /* Revolutionary Responsive Design */
+        /* Professional Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -539,8 +549,8 @@
             }
             
             .nav-toggle {
-                width: 50px;
-                height: 50px;
+                width: 48px;
+                height: 48px;
             }
             
             .social-links {
@@ -548,8 +558,8 @@
             }
             
             .social-link {
-                width: 50px;
-                height: 50px;
+                width: 48px;
+                height: 48px;
             }
             
             .achievement-badges {
@@ -558,17 +568,17 @@
             
             .achievement-badge {
                 padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
+                font-size: 0.875rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Revolutionary Background System -->
-    <div class="cosmic-bg"></div>
-    <div class="quantum-grid"></div>
+    <!-- Professional Background System -->
+    <div class="academic-bg"></div>
+    <div class="academic-grid"></div>
 
-    <!-- Revolutionary Navigation -->
+    <!-- Professional Navigation -->
     <div class="nav-container">
         <div class="nav-toggle" id="navToggle">
             <i data-lucide="menu" class="w-6 h-6"></i>
@@ -584,19 +594,20 @@
         </div>
     </div>
 
-    <!-- Revolutionary Hero Section -->
+    <!-- Professional Hero Section -->
     <section class="hero-container">
         <div class="hero-content">
             <div class="hero-avatar">
-                <div class="orbitron" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; color: #fff;">
+                <div class="playfair" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 2.5rem; color: #fff;">
                     MA
                 </div>
             </div>
-            <h1 class="hero-title orbitron">MATIN ALINEJAD</h1>
-            <p class="hero-subtitle">Pioneer in Causal AI Research</p>
+            <h1 class="hero-title playfair">Matin Alinejad</h1>
+            <p class="hero-subtitle">Electrical Engineering Student & Researcher</p>
             <p class="hero-description">
-                Revolutionizing the intersection of causality, machine learning, and control systems. 
-                Leading the future of AI with groundbreaking research in causal reasoning.
+                Dedicated researcher specializing in causal inference, machine learning, and control systems. 
+                Currently pursuing my B.Sc. at Sharif University of Technology with a focus on advancing 
+                AI reasoning capabilities through innovative research methodologies.
             </p>
             
             <div class="social-links">
@@ -621,125 +632,126 @@
                 </div>
                 <div class="achievement-badge">
                     <i data-lucide="star"></i>
-                    C2P Paper Pioneer
+                    C2P Research Paper
                 </div>
                 <div class="achievement-badge">
                     <i data-lucide="zap"></i>
-                    AI Research Leader
+                    AI Research Focus
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Revolutionary About Section -->
+    <!-- Professional About Section -->
     <section id="about" class="section">
-        <h2 class="section-title">About the Pioneer</h2>
-        <div class="quantum-card">
+        <h2 class="section-title">About Me</h2>
+        <div class="academic-card">
             <p class="text-lg leading-relaxed mb-6">
-                I am a visionary Electrical Engineering student at Sharif University of Technology, 
-                pioneering the future of artificial intelligence through groundbreaking research in 
-                causal inference and machine learning.
+                I am a final-year Electrical Engineering student at Sharif University of Technology, 
+                passionate about the intersection of causality, machine learning, and control systems. 
+                My academic journey is driven by a deep interest in understanding and enhancing 
+                the reasoning capabilities of artificial intelligence systems.
             </p>
             <p class="text-lg leading-relaxed mb-6">
-                My revolutionary work focuses on bridging the gap between statistical machine learning 
-                and true causal understanding, creating the foundation for the next generation of AI systems 
-                that can truly reason about cause and effect.
+                My research focuses on bridging the gap between statistical machine learning and 
+                true causal understanding, with particular emphasis on developing frameworks that 
+                enable AI systems to reason about cause-and-effect relationships effectively.
             </p>
             <div class="mt-8">
-                <h3 class="text-2xl font-bold mb-4" style="color: var(--neon-cyan);">Research Frontiers</h3>
+                <h3 class="text-2xl font-bold mb-4" style="color: var(--academic-blue);">Research Interests</h3>
                 <div class="flex flex-wrap gap-2">
                     <div class="skill-tag">Causal Inference & Discovery</div>
                     <div class="skill-tag">Causal Reinforcement Learning</div>
                     <div class="skill-tag">Control & Dynamical Systems</div>
                     <div class="skill-tag">AI Safety & Ethics</div>
-                    <div class="skill-tag">Quantum Machine Learning</div>
+                    <div class="skill-tag">Machine Learning</div>
                     <div class="skill-tag">Neural Architecture Search</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Revolutionary Education Section -->
+    <!-- Professional Education Section -->
     <section id="education" class="section">
-        <h2 class="section-title">Academic Journey</h2>
+        <h2 class="section-title">Academic Background</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <div class="quantum-card">
+                <div class="academic-card">
                     <h3 class="text-2xl font-bold mb-2">Sharif University of Technology</h3>
-                    <p class="text-lg" style="color: var(--neon-cyan);">B.Sc. Electrical Engineering</p>
+                    <p class="text-lg" style="color: var(--academic-blue);">B.Sc. Electrical Engineering</p>
                     <p class="text-gray-400 mb-2">2020 – Present</p>
-                    <p class="text-lg font-bold" style="color: var(--quantum-green);">GPA: 3.58/4.0</p>
-                    <span class="inline-block mt-2 px-3 py-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-sm">
-                        Current
+                    <p class="text-lg font-bold" style="color: var(--academic-gold);">GPA: 3.58/4.0</p>
+                    <span class="inline-block mt-2 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-sm">
+                        Current Student
                     </span>
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="quantum-card">
+                <div class="academic-card">
                     <h3 class="text-2xl font-bold mb-2">Shahid Beheshti High School (NODET)</h3>
-                    <p class="text-lg" style="color: var(--neon-cyan);">Mathematics and Physics</p>
+                    <p class="text-lg" style="color: var(--academic-blue);">Mathematics and Physics</p>
                     <p class="text-gray-400 mb-2">2017 – 2020</p>
-                    <p class="text-lg font-bold" style="color: var(--quantum-green);">GPA: 19.2/20.0</p>
+                    <p class="text-lg font-bold" style="color: var(--academic-gold);">GPA: 19.2/20.0</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Revolutionary Research Section -->
+    <!-- Professional Research Section -->
     <section id="research" class="section">
-        <h2 class="section-title">Research Revolution</h2>
+        <h2 class="section-title">Research Experience</h2>
         <div class="space-y-6">
-            <div class="quantum-card">
+            <div class="academic-card">
                 <div class="flex items-start justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold mb-2">Causal/Counterfactual Reasoning in LLMs</h3>
-                        <p class="text-lg" style="color: var(--neon-cyan);">RIML-Lab, Sharif University</p>
+                        <p class="text-lg" style="color: var(--academic-blue);">RIML-Lab, Sharif University</p>
                         <p class="text-gray-400">2025 – Present</p>
                     </div>
                     <div class="rotating">
-                        <i data-lucide="brain" class="w-8 h-8" style="color: var(--neon-pink);"></i>
+                        <i data-lucide="brain" class="w-8 h-8" style="color: var(--academic-purple);"></i>
                     </div>
                 </div>
                 <p class="text-lg leading-relaxed">
-                    Developing revolutionary benchmark datasets and frameworks to evaluate and enhance 
-                    LLM performance in causal inference and counterfactual reasoning tasks.
+                    Developing comprehensive benchmark datasets and frameworks to evaluate and enhance 
+                    Large Language Model performance in causal inference and counterfactual reasoning tasks.
                 </p>
             </div>
 
-            <div class="quantum-card">
+            <div class="academic-card">
                 <div class="flex items-start justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold mb-2">C2P: Causal Chain of Prompting</h3>
-                        <p class="text-lg" style="color: var(--neon-cyan);">Independent Research</p>
+                        <p class="text-lg" style="color: var(--academic-blue);">Independent Research</p>
                         <p class="text-gray-400">2023 – 2024</p>
                     </div>
                     <div class="floating">
-                        <i data-lucide="zap" class="w-8 h-8" style="color: var(--quantum-green);"></i>
+                        <i data-lucide="zap" class="w-8 h-8" style="color: var(--academic-teal);"></i>
                     </div>
                 </div>
                 <p class="text-lg leading-relaxed">
-                    Co-developed the groundbreaking C2P framework that integrates causal discovery 
-                    algorithms into LLMs, revolutionizing their reasoning capabilities.
+                    Co-developed the C2P framework that integrates causal discovery algorithms into 
+                    Large Language Models, enhancing their reasoning capabilities and understanding of causality.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Revolutionary Experience Section -->
+    <!-- Professional Experience Section -->
     <section id="experience" class="section">
-        <h2 class="section-title">Professional Excellence</h2>
+        <h2 class="section-title">Academic Experience</h2>
         
-        <div class="quantum-card mb-8">
-            <h3 class="text-2xl font-bold mb-6" style="color: var(--neon-cyan);">Academic Leadership</h3>
+        <div class="academic-card mb-8">
+            <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-blue);">Teaching Assistantships</h3>
             <div class="space-y-4">
-                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 rounded-lg">
+                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg">
                     <div>
                         <h4 class="text-lg font-semibold">Head Teaching Assistant</h4>
                         <p class="text-gray-400">Mathematical Methods in Engineering</p>
                     </div>
-                    <span class="text-sm text-cyan-400">Spring 2025</span>
+                    <span class="text-sm text-blue-400">Spring 2025</span>
                 </div>
-                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-lg">
+                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-purple-900/20 to-teal-900/20 rounded-lg">
                     <div>
                         <h4 class="text-lg font-semibold">Teaching Assistant</h4>
                         <p class="text-gray-400">Image Processing & Industrial Control</p>
@@ -749,14 +761,14 @@
             </div>
         </div>
 
-        <div class="quantum-card">
-            <h3 class="text-2xl font-bold mb-6" style="color: var(--neon-pink);">Innovation Projects</h3>
+        <div class="academic-card">
+            <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-purple);">Course Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-lg">
+                <div class="p-4 bg-gradient-to-br from-blue-900/20 to-teal-900/20 rounded-lg">
                     <h4 class="text-lg font-semibold mb-2">Machine Learning & Vision</h4>
                     <p class="text-sm text-gray-400">Advanced ML algorithms and computer vision systems</p>
                 </div>
-                <div class="p-4 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg">
+                <div class="p-4 bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-lg">
                     <h4 class="text-lg font-semibold mb-2">Optimal Control via Koopman</h4>
                     <p class="text-sm text-gray-400">Data-driven control of nonlinear systems</p>
                 </div>
@@ -764,40 +776,40 @@
         </div>
     </section>
 
-    <!-- Revolutionary Publications Section -->
+    <!-- Professional Publications Section -->
     <section id="publications" class="section">
-        <h2 class="section-title">Groundbreaking Publications</h2>
-        <div class="quantum-card">
+        <h2 class="section-title">Publications</h2>
+        <div class="academic-card">
             <div class="flex items-start justify-between mb-6">
                 <div>
                     <h3 class="text-2xl font-bold mb-2">C2P: Featuring Large Language Models with Causal Reasoning</h3>
-                    <p class="text-lg" style="color: var(--neon-cyan);">2024</p>
+                    <p class="text-lg" style="color: var(--academic-blue);">2024</p>
                     <p class="text-gray-400 mb-4">
                         Abdolmahdi Bagheri*, <strong>Matin Alinejad*</strong>, Kevin Bello, Alireza Akhondi-Asl
                     </p>
                 </div>
                 <div class="floating">
-                    <i data-lucide="file-text" class="w-8 h-8" style="color: var(--neon-pink);"></i>
+                    <i data-lucide="file-text" class="w-8 h-8" style="color: var(--academic-purple);"></i>
                 </div>
             </div>
             <p class="text-lg leading-relaxed mb-6">
-                A revolutionary framework that integrates causal discovery algorithms into LLMs, 
-                creating the foundation for truly intelligent AI systems that understand causality.
+                A novel framework that integrates causal discovery algorithms into Large Language Models, 
+                creating the foundation for AI systems that can understand and reason about causality.
             </p>
             <a href="https://arxiv.org/pdf/2407.18069v2" target="_blank" 
-               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full font-semibold hover:scale-105 transition-transform">
+               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold hover:scale-105 transition-transform">
                 <i data-lucide="external-link"></i>
                 View Paper
             </a>
         </div>
     </section>
 
-    <!-- Revolutionary Skills Section -->
+    <!-- Professional Skills Section -->
     <section id="skills" class="section">
-        <h2 class="section-title">Technical Mastery</h2>
+        <h2 class="section-title">Technical Skills</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="quantum-card">
-                <h3 class="text-2xl font-bold mb-6" style="color: var(--neon-cyan);">Programming Excellence</h3>
+            <div class="academic-card">
+                <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-blue);">Programming Languages</h3>
                 <div class="space-y-4">
                     <div>
                         <h4 class="text-lg font-semibold mb-2">Expert Level</h4>
@@ -818,8 +830,8 @@
                 </div>
             </div>
 
-            <div class="quantum-card">
-                <h3 class="text-2xl font-bold mb-6" style="color: var(--neon-pink);">Global Communication</h3>
+            <div class="academic-card">
+                <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-purple);">Languages & Leadership</h3>
                 <div class="space-y-4">
                     <div>
                         <h4 class="text-lg font-semibold mb-2">Languages</h4>
@@ -842,37 +854,37 @@
         </div>
     </section>
 
-    <!-- Revolutionary Contact Section -->
+    <!-- Professional Contact Section -->
     <section id="contact" class="section">
         <div class="contact-section">
-            <h2 class="section-title">Connect with the Pioneer</h2>
+            <h2 class="section-title">Contact Information</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <i data-lucide="mail" class="w-6 h-6" style="color: var(--neon-cyan);"></i>
-                    <a href="mailto:matin.alnj@gmail.com" class="text-lg hover:text-cyan-400 transition-colors">
+                    <i data-lucide="mail" class="w-6 h-6" style="color: var(--academic-blue);"></i>
+                    <a href="mailto:matin.alnj@gmail.com" class="text-lg hover:text-blue-400 transition-colors">
                         matin.alnj@gmail.com
                     </a>
                 </div>
                 <div class="contact-item">
-                    <i data-lucide="phone" class="w-6 h-6" style="color: var(--neon-pink);"></i>
+                    <i data-lucide="phone" class="w-6 h-6" style="color: var(--academic-purple);"></i>
                     <span class="text-lg">+98 930 600 8661</span>
                 </div>
                 <div class="contact-item">
-                    <i data-lucide="map-pin" class="w-6 h-6" style="color: var(--quantum-green);"></i>
+                    <i data-lucide="map-pin" class="w-6 h-6" style="color: var(--academic-teal);"></i>
                     <span class="text-lg">Tehran, Iran</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Revolutionary Footer -->
-    <footer class="text-center py-8 border-t border-cyan-500/20">
-        <p class="text-gray-400">&copy; 2024 Matin Alinejad. Pioneer in AI Research.</p>
-        <p class="text-sm text-gray-600 mt-2">Designed by Matin Alinejad - Revolutionizing the Future</p>
+    <!-- Professional Footer -->
+    <footer class="text-center py-8 border-t border-blue-500/20">
+        <p class="text-gray-400">&copy; 2024 Matin Alinejad. Academic Researcher.</p>
+        <p class="text-sm text-gray-600 mt-2">Designed by Matin Alinejad - Professional Academic Portfolio</p>
     </footer>
 
     <script>
-        // Revolutionary Navigation
+        // Professional Navigation
         lucide.createIcons();
         
         const navToggle = document.getElementById('navToggle');
@@ -882,7 +894,7 @@
             navMenu.classList.toggle('active');
         });
 
-        // Revolutionary Smooth Scrolling
+        // Professional Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -897,7 +909,7 @@
             });
         });
 
-        // Revolutionary Scroll Animations
+        // Professional Scroll Animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -912,18 +924,18 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.quantum-card, .section-title').forEach(el => {
+        document.querySelectorAll('.academic-card, .section-title').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
 
-        // Revolutionary Parallax Effect
+        // Professional Parallax Effect
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.cosmic-bg');
-            const speed = scrolled * 0.5;
+            const parallax = document.querySelector('.academic-bg');
+            const speed = scrolled * 0.3;
             parallax.style.transform = `translateY(${speed}px)`;
         });
     </script>

@@ -1,943 +1,456 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matin Alinejad | Academic Researcher</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <style>
-        :root {
-            --academic-navy: #1a365d;
-            --academic-gold: #d69e2e;
-            --academic-slate: #2d3748;
-            --academic-blue: #3182ce;
-            --academic-teal: #319795;
-            --academic-purple: #805ad5;
-            --academic-gray: #4a5568;
-            --academic-light: #e2e8f0;
-            --academic-dark: #1a202c;
-            --academic-white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--academic-dark) 0%, var(--academic-slate) 100%);
-            color: var(--academic-white);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        .playfair { font-family: 'Playfair Display', serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-
-        /* Professional Background System */
-        .academic-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(128, 90, 213, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(49, 151, 149, 0.1) 0%, transparent 50%);
-            animation: academicShift 30s ease-in-out infinite;
-        }
-
-        @keyframes academicShift {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
-            50% { transform: scale(1.1) rotate(90deg); opacity: 0.5; }
-        }
-
-        /* Professional Grid System */
-        .academic-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -5;
-            background-image: 
-                linear-gradient(rgba(49, 130, 206, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(49, 130, 206, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridPulse 12s ease-in-out infinite;
-        }
-
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.05; transform: scale(1); }
-            50% { opacity: 0.15; transform: scale(1.02); }
-        }
-
-        /* Professional Navigation */
-        .nav-container {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            z-index: 1000;
-        }
-
-        .nav-toggle {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(49, 130, 206, 0.3);
-        }
-
-        .nav-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(49, 130, 206, 0.4);
-        }
-
-        .nav-menu {
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: rgba(26, 32, 44, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--academic-blue);
-            border-radius: 16px;
-            padding: 1rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            min-width: 200px;
-        }
-
-        .nav-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .nav-item {
-            display: block;
-            padding: 0.75rem 1.25rem;
-            color: var(--academic-white);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--academic-blue), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-item:hover::before {
-            left: 100%;
-        }
-
-        .nav-item:hover {
-            background: rgba(49, 130, 206, 0.1);
-            transform: translateX(5px);
-        }
-
-        /* Professional Hero Section */
-        .hero-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero-avatar {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 3rem;
-            position: relative;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple), var(--academic-teal));
-            padding: 4px;
-            animation: avatarGlow 4s ease-in-out infinite;
-        }
-
-        .hero-avatar::before {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple), var(--academic-teal));
-            opacity: 0.3;
-            animation: avatarPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes avatarGlow {
-            0%, 100% { box-shadow: 0 0 30px rgba(49, 130, 206, 0.3); }
-            50% { box-shadow: 0 0 50px rgba(128, 90, 213, 0.4); }
-        }
-
-        @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.5; }
-        }
-
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: var(--academic-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--academic-white);
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titleShimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes titleShimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.1); }
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--academic-gold);
-            margin-bottom: 2rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--academic-light);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-        }
-
-        /* Professional Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .social-link {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--academic-white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--academic-teal), var(--academic-gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(49, 130, 206, 0.3);
-        }
-
-        .social-link i {
-            position: relative;
-            z-index: 1;
-            font-size: 1.4rem;
-        }
-
-        /* Professional Achievement Badges */
-        .achievement-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .achievement-badge {
-            padding: 0.875rem 1.75rem;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            border-radius: 25px;
-            color: var(--academic-white);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.95rem;
-        }
-
-        .achievement-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .achievement-badge:hover::before {
-            left: 100%;
-        }
-
-        .achievement-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.3);
-        }
-
-        /* Professional Section Design */
-        .section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--academic-blue), var(--academic-purple));
-            border-radius: 2px;
-        }
-
-        /* Professional Card System */
-        .academic-card {
-            background: rgba(26, 32, 44, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--academic-blue);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .academic-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-purple));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .academic-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .academic-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(49, 130, 206, 0.15);
-            border-color: var(--academic-purple);
-        }
-
-        /* Professional Skill Tags */
-        .skill-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.25rem;
-            background: linear-gradient(135deg, var(--academic-blue), var(--academic-teal));
-            color: var(--academic-white);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .skill-tag:hover::before {
-            left: 100%;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
-        }
-
-        /* Professional Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 1rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--academic-blue), var(--academic-purple));
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--academic-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(49, 130, 206, 0.4);
-        }
-
-        /* Professional Contact Section */
-        .contact-section {
-            background: linear-gradient(135deg, rgba(49, 130, 206, 0.1), rgba(128, 90, 213, 0.1));
-            border-radius: 24px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 2rem;
-            background: rgba(26, 32, 44, 0.8);
-            border-radius: 16px;
-            border: 1px solid var(--academic-blue);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(49, 130, 206, 0.2);
-        }
-
-        /* Professional Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .rotating {
-            animation: rotate 25s linear infinite;
-        }
-
-        /* Professional Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .nav-container {
-                top: 1rem;
-                right: 1rem;
-            }
-            
-            .nav-toggle {
-                width: 48px;
-                height: 48px;
-            }
-            
-            .social-links {
-                gap: 1rem;
-            }
-            
-            .social-link {
-                width: 48px;
-                height: 48px;
-            }
-            
-            .achievement-badges {
-                gap: 1rem;
-            }
-            
-            .achievement-badge {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.875rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matin Alinejad | Academic Researcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    :root {
+      --academic-navy: #1a365d;
+      --academic-gold: #d69e2e;
+      --academic-slate: #2d3748;
+      --academic-blue: #3182ce;
+      --academic-teal: #319795;
+      --academic-purple: #805ad5;
+      --academic-gray: #4a5568;
+      --academic-light: #e2e8f0;
+      --academic-dark: #1a202c;
+      --academic-white: #ffffff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--academic-dark) 0%, var(--academic-slate) 100%);
+      color: var(--academic-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .playfair { font-family: 'Playfair Display', serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .academic-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -10;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(128, 90, 213, 0.10) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(49, 151, 149, 0.10) 0%, transparent 50%);
+      animation: academicShift 30s ease-in-out infinite;
+    }
+    @keyframes academicShift {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+      50% { transform: scale(1.1) rotate(90deg); opacity: 0.5; }
+    }
+    .academic-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -5;
+      background-image: 
+        linear-gradient(rgba(49, 130, 206, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49, 130, 206, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPulse 12s ease-in-out infinite;
+    }
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.05; transform: scale(1); }
+      50% { opacity: 0.15; transform: scale(1.02); }
+    }
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26, 32, 44, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(49,130,206,0.12);
+      box-shadow: 0 2px 12px 0 rgba(49,130,206,0.04);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 64px;
+    }
+    #navbar ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #navbar a {
+      color: var(--academic-light);
+      font-weight: 500;
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    #navbar a.active, #navbar a:hover {
+      background: linear-gradient(90deg, var(--academic-blue), var(--academic-purple));
+      color: var(--academic-white);
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      background: linear-gradient(90deg, var(--academic-blue), var(--academic-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .section-heading.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-heading::after {
+      content: '';
+      display: block;
+      margin: 1.2rem auto 0 auto;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--academic-blue), var(--academic-gold));
+      border-radius: 2px;
+    }
+    .academic-card {
+      background: rgba(26, 32, 44, 0.85);
+      border: 1px solid rgba(49,130,206,0.15);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px 0 rgba(49,130,206,0.08);
+      backdrop-filter: blur(16px);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.2s, border 0.2s, opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .academic-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 2rem 1.5rem;
+      position: relative;
+    }
+    @media (max-width: 700px) {
+      .section-heading { font-size: 1.6rem; }
+      section { padding: 3rem 0.5rem 1.5rem 0.5rem; }
+      #navbar ul { gap: 0.7rem; }
+    }
+    /* Hero animation */
+    #hero {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    #hero.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 900px) {
+      section { max-width: 100%; }
+      .academic-card { padding: 1.5rem 1rem; }
+    }
+    @media (max-width: 700px) {
+      .section-heading { font-size: 1.6rem; }
+      section { padding: 2rem 0.2rem 1rem 0.2rem; }
+      #navbar ul { gap: 0.3rem; flex-wrap: wrap; }
+      #navbar a { font-size: 1rem; padding: 0.4rem 0.7rem; }
+      .academic-card { margin-bottom: 1.2rem; }
+      .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+      .flex.md\:flex-row { flex-direction: column !important; }
+      .md\:items-center { align-items: flex-start !important; }
+      .md\:justify-between { justify-content: flex-start !important; }
+      .md\:mt-0 { margin-top: 0 !important; }
+      .max-w-xl { max-width: 95vw; }
+      .rounded-full { width: 110px !important; height: 110px !important; }
+      .playfair.text-5xl { font-size: 2.2rem !important; }
+      .flex.gap-4.mb-4 { gap: 1rem !important; }
+      .inline-block.mt-2.px-6.py-2 { padding: 0.5rem 1.2rem !important; font-size: 1rem !important; }
+      form.space-y-4.max-w-lg.mx-auto { max-width: 98vw !important; }
+      .flex.gap-4 { gap: 0.5rem !important; flex-direction: column !important; }
+      .w-1\/2 { width: 100% !important; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Professional Background System -->
-    <div class="academic-bg"></div>
-    <div class="academic-grid"></div>
+  <div class="academic-bg"></div>
+  <div class="academic-grid"></div>
 
-    <!-- Professional Navigation -->
-    <div class="nav-container">
-        <div class="nav-toggle" id="navToggle">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-        </div>
-        <div class="nav-menu" id="navMenu">
-            <a href="#about" class="nav-item">About</a>
-            <a href="#education" class="nav-item">Education</a>
-            <a href="#research" class="nav-item">Research</a>
-            <a href="#experience" class="nav-item">Experience</a>
-            <a href="#publications" class="nav-item">Publications</a>
-            <a href="#skills" class="nav-item">Skills</a>
-            <a href="#contact" class="nav-item">Contact</a>
-        </div>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#research-interests">Research Interests</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#honors-activities">Honors</a></li>
+      <li><a href="#blog-news">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero / Welcome Section -->
+  <header id="hero" class="flex flex-col items-center justify-center min-h-[80vh]">
+    <div class="rounded-full border-4 border-blue-400 shadow-lg mb-6 overflow-hidden" style="width:160px;height:160px;background:rgba(49,130,206,0.08);">
+      <!-- Profile photo placeholder -->
+      <img src="profile-placeholder.png" alt="Profile Photo" class="w-full h-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="playfair text-5xl flex items-center justify-center h-full w-full text-blue-300" style="display:none;">MA</span>
     </div>
+    <h1 class="playfair text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-yellow-400 bg-clip-text text-transparent">Matin Alinejad</h1>
+    <h2 class="mono text-lg md:text-xl text-blue-200 mb-4">Electrical Engineering Student & Researcher</h2>
+    <p class="max-w-xl text-center text-lg text-slate-200 mb-6">Welcome to my academic homepage. I am passionate about research in machine learning, causal inference, and control systems. Explore my work, projects, and teaching below.</p>
+    <div class="flex gap-4 mb-4">
+      <a href="mailto:your.email@domain.com" class="text-blue-400 hover:text-yellow-400" title="Email"><i data-lucide="mail"></i></a>
+      <a href="#" class="text-blue-400 hover:text-yellow-400" title="Google Scholar"><i data-lucide="graduation-cap"></i></a>
+      <a href="#" class="text-blue-400 hover:text-yellow-400" title="GitHub"><i data-lucide="github"></i></a>
+      <a href="#" class="text-blue-400 hover:text-yellow-400" title="CV"><i data-lucide="file-text"></i></a>
+    </div>
+    <a href="cv-placeholder.pdf" class="inline-block mt-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 text-white font-semibold shadow hover:scale-105 transition-transform">Download CV</a>
+  </header>
 
-    <!-- Professional Hero Section -->
-    <section class="hero-container">
-        <div class="hero-content">
-            <div class="hero-avatar">
-                <div class="playfair" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 2.5rem; color: #fff;">
-                    MA
-                </div>
-            </div>
-            <h1 class="hero-title playfair">Matin Alinejad</h1>
-            <p class="hero-subtitle">Electrical Engineering Student & Researcher</p>
-            <p class="hero-description">
-                Dedicated researcher specializing in causal inference, machine learning, and control systems. 
-                Currently pursuing my B.Sc. at Sharif University of Technology with a focus on advancing 
-                AI reasoning capabilities through innovative research methodologies.
-            </p>
-            
-            <div class="social-links">
-                <a href="mailto:matin.alnj@gmail.com" class="social-link" title="Email">
-                    <i data-lucide="mail"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?hl=en&user=8YnQNuMAAAAJ" class="social-link" title="Google Scholar">
-                    <i data-lucide="graduation-cap"></i>
-                </a>
-                <a href="https://arxiv.org/pdf/2407.18069v2" class="social-link" title="arXiv">
-                    <i data-lucide="file-text"></i>
-                </a>
-                <a href="https://github.com/matinalinejad" class="social-link" title="GitHub">
-                    <i data-lucide="github"></i>
-                </a>
-            </div>
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-heading">About Me</h2>
+    <div class="academic-card">
+      <p class="mb-2">I am a [year] Electrical Engineering student at [University], interested in [main research areas].</p>
+      <p class="mb-2">My research focuses on [short research summary].</p>
+      <ul class="list-disc pl-6 text-slate-300 mt-4">
+        <li>Current position: [e.g., Undergraduate Student, Research Assistant]</li>
+        <li>Affiliation: [Department, University]</li>
+        <li>Advisor: [Advisor Name]</li>
+      </ul>
+    </div>
+  </section>
 
-            <div class="achievement-badges">
-                <div class="achievement-badge">
-                    <i data-lucide="trophy"></i>
-                    Top 101 National Exam
-                </div>
-                <div class="achievement-badge">
-                    <i data-lucide="star"></i>
-                    C2P Research Paper
-                </div>
-                <div class="achievement-badge">
-                    <i data-lucide="zap"></i>
-                    AI Research Focus
-                </div>
+  <!-- Education Section -->
+  <section id="education">
+    <h2 class="section-heading">Education</h2>
+    <div class="academic-card">
+      <ul class="space-y-4">
+        <li>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <span class="font-semibold">[Degree]</span> in [Major], <span class="text-blue-300">[University]</span>
+              <div class="text-slate-400 text-sm">[Start Year] – [End Year or Present]</div>
             </div>
+            <div class="text-yellow-400 font-mono mt-2 md:mt-0">GPA: [GPA]</div>
+          </div>
+        </li>
+        <li>
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <span class="font-semibold">[High School Diploma]</span>, <span class="text-blue-300">[High School Name]</span>
+              <div class="text-slate-400 text-sm">[Start Year] – [End Year]</div>
+            </div>
+            <div class="text-yellow-400 font-mono mt-2 md:mt-0">GPA: [GPA]</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Research Interests Section -->
+  <section id="research-interests">
+    <h2 class="section-heading">Research Interests</h2>
+    <div class="academic-card flex flex-wrap gap-3">
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">Causal Inference</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">Machine Learning</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">Control Systems</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">AI Safety</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">[Add more]</span>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section id="publications">
+    <h2 class="section-heading">Publications</h2>
+    <div class="academic-card space-y-6">
+      <!-- Publication Card Example -->
+      <div class="border-l-4 border-blue-400 pl-4 pb-2">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div>
+            <span class="font-semibold">[Paper Title]</span><br>
+            <span class="text-slate-400 text-sm">[Authors]</span><br>
+            <span class="text-blue-300 text-sm">[Journal/Conference], [Year]</span>
+          </div>
+          <div class="flex gap-2 mt-2 md:mt-0">
+            <a href="#" class="text-blue-400 hover:text-yellow-400" title="PDF"><i data-lucide="file-text"></i></a>
+            <a href="#" class="text-blue-400 hover:text-yellow-400" title="arXiv"><i data-lucide="external-link"></i></a>
+            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="text-blue-400 hover:text-yellow-400" title="Show BibTeX"><i data-lucide="braces"></i></button>
+          </div>
         </div>
-    </section>
+        <pre class="bg-slate-900 text-xs text-slate-200 rounded p-3 mt-2 hidden">@article{...BibTeX...}</pre>
+      </div>
+      <!-- Add more publication cards as needed -->
+    </div>
+  </section>
 
-    <!-- Professional About Section -->
-    <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="academic-card">
-            <p class="text-lg leading-relaxed mb-6">
-                I am a final-year Electrical Engineering student at Sharif University of Technology, 
-                passionate about the intersection of causality, machine learning, and control systems. 
-                My academic journey is driven by a deep interest in understanding and enhancing 
-                the reasoning capabilities of artificial intelligence systems.
-            </p>
-            <p class="text-lg leading-relaxed mb-6">
-                My research focuses on bridging the gap between statistical machine learning and 
-                true causal understanding, with particular emphasis on developing frameworks that 
-                enable AI systems to reason about cause-and-effect relationships effectively.
-            </p>
-            <div class="mt-8">
-                <h3 class="text-2xl font-bold mb-4" style="color: var(--academic-blue);">Research Interests</h3>
-                <div class="flex flex-wrap gap-2">
-                    <div class="skill-tag">Causal Inference & Discovery</div>
-                    <div class="skill-tag">Causal Reinforcement Learning</div>
-                    <div class="skill-tag">Control & Dynamical Systems</div>
-                    <div class="skill-tag">AI Safety & Ethics</div>
-                    <div class="skill-tag">Machine Learning</div>
-                    <div class="skill-tag">Neural Architecture Search</div>
-                </div>
-            </div>
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-heading">Projects</h2>
+    <div class="academic-card grid md:grid-cols-2 gap-6">
+      <!-- Project Card Example -->
+      <div class="bg-blue-900/30 border border-blue-400 rounded-lg p-4 flex flex-col gap-2">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-semibold">[Project Title]</span>
+          <a href="#" class="text-blue-400 hover:text-yellow-400" title="GitHub"><i data-lucide="github"></i></a>
+          <a href="#" class="text-blue-400 hover:text-yellow-400" title="Demo"><i data-lucide="external-link"></i></a>
         </div>
-    </section>
-
-    <!-- Professional Education Section -->
-    <section id="education" class="section">
-        <h2 class="section-title">Academic Background</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="academic-card">
-                    <h3 class="text-2xl font-bold mb-2">Sharif University of Technology</h3>
-                    <p class="text-lg" style="color: var(--academic-blue);">B.Sc. Electrical Engineering</p>
-                    <p class="text-gray-400 mb-2">2020 – Present</p>
-                    <p class="text-lg font-bold" style="color: var(--academic-gold);">GPA: 3.58/4.0</p>
-                    <span class="inline-block mt-2 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-sm">
-                        Current Student
-                    </span>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="academic-card">
-                    <h3 class="text-2xl font-bold mb-2">Shahid Beheshti High School (NODET)</h3>
-                    <p class="text-lg" style="color: var(--academic-blue);">Mathematics and Physics</p>
-                    <p class="text-gray-400 mb-2">2017 – 2020</p>
-                    <p class="text-lg font-bold" style="color: var(--academic-gold);">GPA: 19.2/20.0</p>
-                </div>
-            </div>
+        <div class="text-slate-300 text-sm">[Short project description]</div>
+        <div class="flex flex-wrap gap-2 mt-1">
+          <span class="px-2 py-1 rounded bg-blue-800/60 text-xs text-blue-100">Python</span>
+          <span class="px-2 py-1 rounded bg-blue-800/60 text-xs text-blue-100">Machine Learning</span>
+          <span class="px-2 py-1 rounded bg-blue-800/60 text-xs text-blue-100">[Tag]</span>
         </div>
-    </section>
+      </div>
+      <!-- Add more project cards as needed -->
+    </div>
+  </section>
 
-    <!-- Professional Research Section -->
-    <section id="research" class="section">
-        <h2 class="section-title">Research Experience</h2>
-        <div class="space-y-6">
-            <div class="academic-card">
-                <div class="flex items-start justify-between mb-4">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Causal/Counterfactual Reasoning in LLMs</h3>
-                        <p class="text-lg" style="color: var(--academic-blue);">RIML-Lab, Sharif University</p>
-                        <p class="text-gray-400">2025 – Present</p>
-                    </div>
-                    <div class="rotating">
-                        <i data-lucide="brain" class="w-8 h-8" style="color: var(--academic-purple);"></i>
-                    </div>
-                </div>
-                <p class="text-lg leading-relaxed">
-                    Developing comprehensive benchmark datasets and frameworks to evaluate and enhance 
-                    Large Language Model performance in causal inference and counterfactual reasoning tasks.
-                </p>
-            </div>
+  <!-- Teaching Section -->
+  <section id="teaching">
+    <h2 class="section-heading">Teaching</h2>
+    <div class="academic-card grid md:grid-cols-2 gap-6">
+      <!-- Teaching Card Example -->
+      <div class="bg-blue-900/30 border border-blue-400 rounded-lg p-4 flex flex-col gap-2">
+        <span class="font-semibold">[Course Title]</span>
+        <span class="text-slate-400 text-sm">[Role, e.g., Teaching Assistant]</span>
+        <span class="text-blue-300 text-sm">[Semester, Year]</span>
+        <a href="#" class="text-blue-400 hover:text-yellow-400 mt-1" title="Syllabus"><i data-lucide="file-text"></i> Syllabus</a>
+      </div>
+      <!-- Add more teaching cards as needed -->
+    </div>
+  </section>
 
-            <div class="academic-card">
-                <div class="flex items-start justify-between mb-4">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">C2P: Causal Chain of Prompting</h3>
-                        <p class="text-lg" style="color: var(--academic-blue);">Independent Research</p>
-                        <p class="text-gray-400">2023 – 2024</p>
-                    </div>
-                    <div class="floating">
-                        <i data-lucide="zap" class="w-8 h-8" style="color: var(--academic-teal);"></i>
-                    </div>
-                </div>
-                <p class="text-lg leading-relaxed">
-                    Co-developed the C2P framework that integrates causal discovery algorithms into 
-                    Large Language Models, enhancing their reasoning capabilities and understanding of causality.
-                </p>
-            </div>
+  <!-- Honors & Activities Section -->
+  <section id="honors-activities">
+    <h2 class="section-heading">Honors & Activities</h2>
+    <div class="academic-card flex flex-wrap gap-3">
+      <span class="px-4 py-2 rounded-full bg-yellow-900/40 border border-yellow-400 text-yellow-200 text-sm">[Award or Honor]</span>
+      <span class="px-4 py-2 rounded-full bg-purple-900/40 border border-purple-400 text-purple-200 text-sm">[Activity]</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">[Service]</span>
+      <span class="px-4 py-2 rounded-full bg-blue-900/40 border border-blue-400 text-blue-200 text-sm">[Add more]</span>
+    </div>
+  </section>
+
+  <!-- Blog/News Section (optional) -->
+  <section id="blog-news">
+    <h2 class="section-heading">Blog & News</h2>
+    <div class="academic-card space-y-6">
+      <!-- Blog Post Example -->
+      <div class="border-l-4 border-yellow-400 pl-4 pb-2">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div>
+            <span class="font-semibold">[Blog Post Title]</span><br>
+            <span class="text-slate-400 text-sm">[Date]</span>
+          </div>
+          <a href="#" class="text-yellow-400 hover:text-blue-400 mt-2 md:mt-0" title="Read More"><i data-lucide="external-link"></i></a>
         </div>
-    </section>
+        <div class="text-slate-300 text-sm mt-2">[Short summary or excerpt of the post]</div>
+      </div>
+      <!-- Add more blog/news posts as needed -->
+    </div>
+  </section>
 
-    <!-- Professional Experience Section -->
-    <section id="experience" class="section">
-        <h2 class="section-title">Academic Experience</h2>
-        
-        <div class="academic-card mb-8">
-            <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-blue);">Teaching Assistantships</h3>
-            <div class="space-y-4">
-                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg">
-                    <div>
-                        <h4 class="text-lg font-semibold">Head Teaching Assistant</h4>
-                        <p class="text-gray-400">Mathematical Methods in Engineering</p>
-                    </div>
-                    <span class="text-sm text-blue-400">Spring 2025</span>
-                </div>
-                <div class="flex items-center justify-between p-4 bg-gradient-to-r from-purple-900/20 to-teal-900/20 rounded-lg">
-                    <div>
-                        <h4 class="text-lg font-semibold">Teaching Assistant</h4>
-                        <p class="text-gray-400">Image Processing & Industrial Control</p>
-                    </div>
-                    <span class="text-sm text-purple-400">Spring 2025</span>
-                </div>
-            </div>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-heading">Contact</h2>
+    <div class="academic-card">
+      <form class="space-y-4 max-w-lg mx-auto">
+        <div class="flex gap-4">
+          <input type="text" name="name" placeholder="Your Name" class="w-1/2 px-4 py-2 rounded bg-slate-800 border border-blue-400 text-white focus:outline-none" required>
+          <input type="email" name="email" placeholder="Your Email" class="w-1/2 px-4 py-2 rounded bg-slate-800 border border-blue-400 text-white focus:outline-none" required>
         </div>
+        <input type="text" name="subject" placeholder="Subject" class="w-full px-4 py-2 rounded bg-slate-800 border border-blue-400 text-white focus:outline-none" required>
+        <textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded bg-slate-800 border border-blue-400 text-white focus:outline-none" required></textarea>
+        <button type="submit" class="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 text-white font-semibold shadow hover:scale-105 transition-transform">Send Message</button>
+      </form>
+      <div class="flex gap-4 justify-center mt-6">
+        <a href="mailto:your.email@domain.com" class="text-blue-400 hover:text-yellow-400" title="Email"><i data-lucide="mail"></i></a>
+        <a href="#" class="text-blue-400 hover:text-yellow-400" title="Google Scholar"><i data-lucide="graduation-cap"></i></a>
+        <a href="#" class="text-blue-400 hover:text-yellow-400" title="GitHub"><i data-lucide="github"></i></a>
+        <a href="#" class="text-blue-400 hover:text-yellow-400" title="Location"><i data-lucide="map-pin"></i></a>
+      </div>
+      <div class="text-center text-slate-400 mt-4">Location: [City, Country]</div>
+    </div>
+  </section>
 
-        <div class="academic-card">
-            <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-purple);">Course Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 bg-gradient-to-br from-blue-900/20 to-teal-900/20 rounded-lg">
-                    <h4 class="text-lg font-semibold mb-2">Machine Learning & Vision</h4>
-                    <p class="text-sm text-gray-400">Advanced ML algorithms and computer vision systems</p>
-                </div>
-                <div class="p-4 bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-lg">
-                    <h4 class="text-lg font-semibold mb-2">Optimal Control via Koopman</h4>
-                    <p class="text-sm text-gray-400">Data-driven control of nonlinear systems</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Footer -->
+  <footer id="footer" class="text-center py-8 border-t border-blue-500/20">
+    <p class="text-gray-400">&copy; 2024 Matin Alinejad. Academic Researcher.</p>
+    <p class="text-sm text-gray-600 mt-2">Designed by Matin Alinejad - Professional Academic Portfolio</p>
+  </footer>
 
-    <!-- Professional Publications Section -->
-    <section id="publications" class="section">
-        <h2 class="section-title">Publications</h2>
-        <div class="academic-card">
-            <div class="flex items-start justify-between mb-6">
-                <div>
-                    <h3 class="text-2xl font-bold mb-2">C2P: Featuring Large Language Models with Causal Reasoning</h3>
-                    <p class="text-lg" style="color: var(--academic-blue);">2024</p>
-                    <p class="text-gray-400 mb-4">
-                        Abdolmahdi Bagheri*, <strong>Matin Alinejad*</strong>, Kevin Bello, Alireza Akhondi-Asl
-                    </p>
-                </div>
-                <div class="floating">
-                    <i data-lucide="file-text" class="w-8 h-8" style="color: var(--academic-purple);"></i>
-                </div>
-            </div>
-            <p class="text-lg leading-relaxed mb-6">
-                A novel framework that integrates causal discovery algorithms into Large Language Models, 
-                creating the foundation for AI systems that can understand and reason about causality.
-            </p>
-            <a href="https://arxiv.org/pdf/2407.18069v2" target="_blank" 
-               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold hover:scale-105 transition-transform">
-                <i data-lucide="external-link"></i>
-                View Paper
-            </a>
-        </div>
-    </section>
+  <script>
+    lucide.createIcons();
 
-    <!-- Professional Skills Section -->
-    <section id="skills" class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="academic-card">
-                <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-blue);">Programming Languages</h3>
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">Expert Level</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="skill-tag">Python (PyTorch)</div>
-                            <div class="skill-tag">MATLAB</div>
-                            <div class="skill-tag">C++</div>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">Advanced</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="skill-tag">Julia</div>
-                            <div class="skill-tag">C</div>
-                            <div class="skill-tag">Java</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="academic-card">
-                <h3 class="text-2xl font-bold mb-6" style="color: var(--academic-purple);">Languages & Leadership</h3>
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">Languages</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="skill-tag">Persian (Native)</div>
-                            <div class="skill-tag">English (Professional)</div>
-                            <div class="skill-tag">Arabic (Elementary)</div>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">Leadership</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="skill-tag">Volleyball Captain</div>
-                            <div class="skill-tag">U19 National Team</div>
-                            <div class="skill-tag">Research Leadership</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Contact Section -->
-    <section id="contact" class="section">
-        <div class="contact-section">
-            <h2 class="section-title">Contact Information</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i data-lucide="mail" class="w-6 h-6" style="color: var(--academic-blue);"></i>
-                    <a href="mailto:matin.alnj@gmail.com" class="text-lg hover:text-blue-400 transition-colors">
-                        matin.alnj@gmail.com
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <i data-lucide="phone" class="w-6 h-6" style="color: var(--academic-purple);"></i>
-                    <span class="text-lg">+98 930 600 8661</span>
-                </div>
-                <div class="contact-item">
-                    <i data-lucide="map-pin" class="w-6 h-6" style="color: var(--academic-teal);"></i>
-                    <span class="text-lg">Tehran, Iran</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Footer -->
-    <footer class="text-center py-8 border-t border-blue-500/20">
-        <p class="text-gray-400">&copy; 2024 Matin Alinejad. Academic Researcher.</p>
-        <p class="text-sm text-gray-600 mt-2">Designed by Matin Alinejad - Professional Academic Portfolio</p>
-    </footer>
-
-    <script>
-        // Professional Navigation
-        lucide.createIcons();
-        
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+    // Section reveal animation
+    function revealOnScroll() {
+      const revealEls = document.querySelectorAll('.section-heading, .academic-card');
+      const hero = document.getElementById('hero');
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => observer.observe(el));
+      observer.observe(hero);
+    }
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-        // Professional Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Professional Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.academic-card, .section-title').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Professional Parallax Effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.academic-bg');
-            const speed = scrolled * 0.3;
-            parallax.style.transform = `translateY(${speed}px)`;
-        });
-    </script>
+    // Smooth scroll and navbar active highlighting
+    const navLinks = document.querySelectorAll('#navbar a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    // Active section highlighting
+    const sectionIds = [
+      'hero','about','education','research-interests','publications','projects','teaching','honors-activities','blog-news','contact'
+    ];
+    function highlightNav() {
+      let scrollPos = window.scrollY || window.pageYOffset;
+      let found = false;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section && section.offsetTop - 120 <= scrollPos) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          navLinks[i].classList.add('active');
+          found = true;
+          break;
+        }
+      }
+      if (!found) navLinks.forEach(l => l.classList.remove('active'));
+    }
+    window.addEventListener('scroll', highlightNav);
+    window.addEventListener('DOMContentLoaded', highlightNav);
+  </script>
 </body>
 </html> 
